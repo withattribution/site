@@ -1,0 +1,115 @@
+.cart-quantity {
+/*  width:40px !important;
+*/  padding: 17px 14px;
+}
+
+.cart-quantity-group {
+  margin-bottom: 10px;
+}
+
+.cart-image {
+  margin: 10px auto 10px auto;
+}
+
+.cart-btn {
+  padding: 7px 12px !important;
+}
+
+hr {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.nopadding {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.dotted {
+  border-bottom: 2px dotted blue;
+}
+
+.cart-checkout-btn {
+  width: 100%;
+  border: 2px solid;
+  padding: 10px 20px 10px 20px;
+  margin-bottom: 10px;
+  font-size: 1.0em;
+  display: inline-block;
+}
+
+.cartLegend {
+  font-size: 1.1em;
+}
+
+/* dotted magic */
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+span.spacer {
+  color: #2e87dd;
+  margin: 0 3px 0 5px;
+  background-image: url("i/dot.png");
+  background-repeat: repeat-x;
+  background-position: left 13px;
+}
+
+/* hbox */
+
+.hbox {
+  padding: 10px;
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  width: 100%;
+}
+
+.hbox > * {
+  -webkit-box-flex: 0;
+  -moz-box-flex: 0;
+  box-flex: 0;
+  display: block;
+}
+
+.spacer {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+}
+
+/* disable number box thing */
+/* http://stackoverflow.com/questions/3790935/can-i-hide-the-html5-number-inputs-spin-box */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+/* testing css */
+.test-background-gray {
+  border: 1px solid gray;
+}
+
+.test-background-blue {
+  border: 1px solid blue;
+}
+
+.test-background-red {
+  border: 1px solid red;
+}

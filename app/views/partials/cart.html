@@ -1,0 +1,265 @@
+<div ng-include="'partials/navbar'"></div>
+
+<div ng-controller="CartCtrl" _class="container">
+  <button ng-click="cart.addItem('Dart')" 
+          class="btn btn-default" 
+          type="button">
+  <span class="glyphicon glyphicon-plus-sign"></span>
+    Add Dart
+  </button>
+
+  <div class="row _test-background-gray" ng-repeat="item in cart.items">
+    <div class="col-md-3">
+      <img src="assets/sq_250.png" alt="..." class="img-thumbnail img-responsive cart-image">
+    </div>
+    <div class="col-md-9 _test-background-red">
+      <h3 class="_test-background-blue">{{item.name}}</h3>
+      <hr>
+      <p>{{item.description}}</p>
+      <hr>
+      <div class="input-group col-xs-12 col-md-4 col-md-offset-8 cart-quantity-group _test-background-red">
+                  <input ng-model="item.quantity" 
+                         type="tel" 
+                         class="form-control cart-quantity" 
+                         value="{{item.quantity}}" 
+                         ng-blur="cartUpdateQuantity(item)">
+        <span class="input-group-btn">
+          <button ng-click="cart.incrementItem(item)"
+                  ng-disabled="item.quantity >= 9" 
+                  class="btn btn-default cart-btn" 
+                  type="button">
+          <span class="glyphicon glyphicon-plus-sign"></span>
+          </button>
+
+          <button ng-click="cart.decrementItem(item)"
+                  ng-disabled="item.quantity <= 1" 
+                  class="btn btn-default cart-btn" 
+                  type="button">
+          <span class="glyphicon glyphicon-minus-sign"></span>
+          </button>
+        </span>
+      </div><!-- /input-group -->
+    </div>  
+  </div><!-- /.row -->
+
+  <div class="row"> <!-- shipping and billing info -->
+    <div class="col-md-6">
+      <!-- shipping info -->
+      <form ng-controller="ShipCtrl" name="shippingForm" ng-submit="ship.processForm()" class="shipping-form form-horizontal" novalidate>
+      
+      <fieldset>
+      <!-- Form Name -->
+      <legend class="cartLegend"><span class="glyphicon glyphicon-transfer"></span>SHIPPING</legend>
+      <!-- first name -->
+      <div class="form-group">
+        <div class="col-md-12">
+          <div class="input-group" ng-class="{'has-error':submitted && shippingForm.firstName.$invalid}">
+            <span class="input-group-addon">First Name</span>
+            <input ng-model="formData.firstName" name="firstName" class="form-control" placeholder="" type="text" required>
+          </div>
+        </div>
+      </div>
+      <!-- last name -->
+      <div class="form-group">
+        <div class="col-md-12">
+          <div class="input-group" ng-class="{'has-error':submitted && shippingForm.lastName.$invalid}">
+            <span class="input-group-addon">Last Name</span>
+            <input ng-model="formData.lastName" name="lastName" class="form-control" placeholder="" type="text" required>
+          </div>
+        </div>
+      </div>
+      <!-- line 1 -->
+      <div class="form-group">
+        <div class="col-md-12">
+          <div class="input-group" ng-class="{'has-error':submitted && shippingForm.lineOne.$invalid}">
+            <span class="input-group-addon">Address Line 1</span>
+            <input ng-model="formData.lineOne" name="lineOne" class="form-control" placeholder="" type="text" required>
+          </div>
+        </div>
+      </div>
+      <!-- line 2 -->
+      <div class="form-group">
+        <div class="col-md-12">
+          <div class="input-group">
+            <span class="input-group-addon">Address Line 2</span>
+            <input ng-model="formData.lineTwo" name="lineTwo" class="form-control" placeholder="optional" type="text">
+          </div>
+        </div>
+      </div>
+      <!-- city -->
+      <div class="form-group">
+        <div class="col-md-6">
+          <div class="input-group" ng-class="{'has-error':submitted && shippingForm.city.$invalid}">
+            <span class="input-group-addon">City</span>
+            <input ng-model="formData.city" name="city" class="form-control" type="text" required>
+          </div>
+        </div>
+      <!-- state -->
+        <div class="col-md-6">
+          <div class="input-group" ng-class="{'has-error':submitted && shippingForm.state.$invalid}">
+            <span class="input-group-addon">State</span>
+            <input ng-model="formData.state" name="state" class="form-control" type="text" required>
+          </div>
+        </div>
+      </div>
+      <!-- zip code -->
+      <div class="form-group">
+        <div class="col-md-12">
+          <div class="input-group" ng-class="{'has-error':submitted && shippingForm.zipcode.$invalid}">
+            <span class="input-group-addon">Zip Code</span>
+            <input ng-model="formData.zipcode" name="zipcode" class="form-control" type="number" required>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+
+        <button class="btn btn-default col-md-12" 
+            ng-click="submitted=true"
+            type="submit"> 
+          <span class="glyphicon glyphicon-plane"></span>
+        </button>
+
+
+        <button class="btn btn-default col-md-12" 
+            ng-click="ship.test()"
+            type="button"> 
+          <span class="glyphicon glyphicon-plane">GAYLORD SURPRISE</span>
+        </button>
+        
+        <div class="btn-group-vertical" ng-repeat="rate in ship.rates">
+          <button ng-click="setService(rate)" type="button" class="btn btn-default">{{rate.service}}</button>
+        </div>
+
+      </form>
+    </div>
+
+    <div class="col-md-6" ng-controller="ChargeCtrl">
+      <!-- billing info -->
+      <form name="chargeForm" class="form-horizontal" ng-submit="charge.getToken()" novalidate>
+      <fieldset>
+      <!-- Form Name -->
+      <legend class="cartLegend">
+        <span class="glyphicon glyphicon-usd"></span>BILLING
+      </legend>
+      <!-- Email Account-->
+      <div class="form-group">
+        <div class="col-md-12">
+          <div class="input-group" ng-class="{'has-error': attempted.email && !chargeForm.email.$valid && !chargeForm.email.$pristine }">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-envelope"></span>
+            </span>
+            <input name="email"
+                   ng-blur="attempted.email=true"
+                   ng-model="charge.email"
+                   class="form-control" 
+                   placeholder="Email" 
+                   type="email"
+                   required>
+          </div>
+        </div>
+      </div>
+      <!-- Card Number -->
+      <div class="form-group">
+        <div class="col-md-12">
+          <div class="input-group"
+               ng-class="{'has-error': (!chargeForm.cardNumber.$valid && !chargeForm.cardNumber.$pristine) || 
+               (attempted.card && !charge.validCard && !chargeForm.cardNumber.$pristine) }">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-credit-card"></span>
+            </span>
+            <input ng-blur="attempted.card=true"
+                   ng-change="isValidCard()"
+                   name="cardNumber" 
+                   class="form-control" 
+                   ng-model="charge.cardNumber" 
+                   placeholder="Card Number" 
+                   type="number"
+                   required>
+          </div>
+        </div>
+      </div>
+      <!-- EXP -->
+      <div class="form-group">
+        <div class="col-md-6">
+          <div class="input-group" ng-class="{'has-error': attempted.exp && !charge.validEXP && !chargeForm.exp.$pristine}">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+            <input name="exp"
+                   ng-keydown="sanitizeEXP()"
+                   ng-blur="attempted.exp=true"
+                   ng-model="charge.exp"
+                   ng-change="isValidEXP()"
+                   class="form-control" 
+                   placeholder="MM / YY" 
+                   maxlength="9"
+                   type="text" 
+                   required>
+          </div>
+        </div>
+        <!-- CVC -->
+        <div class="col-md-6">
+          <div class="input-group" ng-class="{'has-error': (!chargeForm.cvc.$valid && !chargeForm.cvc.$pristine) || (attempted.cvc && !chargeForm.cvc.$valid && !chargeForm.cvc.$pristine) }">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-lock"></span>
+            </span>
+            <input name="cvc"
+                   ng-blur="attempted.cvc=true"
+                   ng-change="isValidCVC()"
+                   ng-model="charge.cvc"
+                   class="form-control" 
+                   placeholder="CVC" 
+                   maxlength="4"
+                   type="text"
+                   required>
+          </div>
+        </div>
+      </div>
+      
+      <ul class="col-md-12">
+        <li class="hbox">
+          <a class="local">Shipping</a>
+          <span class="spacer boxFlex"></span>
+          $99.99
+        </li>
+        <li class="hbox">
+          <a class="local">Total</a>
+          <span class="spacer boxFlex"></span>
+          $99.99
+        </li>
+      </ul>
+
+      </fieldset>
+
+      <button
+        class="btn btn-default col-md-12"
+        type="submit">
+        <span class="glyphicon glyphicon-credit-card"></span>  TOKEN
+      </button>
+
+      </form>
+      <br>
+
+      <hr>
+<!-- checkout button -->
+      <!-- <div class="row">  -->
+        <div class="col-md-12 nopadding">
+        <!-- <div class="_col-md-3 nopadding _col-md-push-9 _test-background-red"> -->
+              <button ng-click="charge.checkout()" 
+                      class="btn btn-default cart-checkout-btn" 
+                      type="button">
+              <span class="glyphicon glyphicon-credit-card"></span>  CHECKOUT
+              </button>
+        <!-- </div> -->
+      </div>
+    <!--</div> /.row -->
+
+    </div>
+
+
+
+  </div> <!--./billing and shipping forms -->
+  
+
+</div> <!-- container -->
+
