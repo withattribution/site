@@ -15,6 +15,10 @@ module.exports = function (grunt) {
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
+  //this is ugly as fuck but is more sane than a constantly bouncing terminal icon -- jesus tap-dancing christ
+  //http://stackoverflow.com/questions/18206682/grunt-bounces-my-terminal-dock-icon-on-osx
+  grunt.option('color', false);
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
