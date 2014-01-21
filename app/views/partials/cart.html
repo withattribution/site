@@ -45,7 +45,7 @@
   <div class="row"> <!-- shipping and billing info -->
     <div class="col-md-6">
       <!-- shipping info -->
-      <form ng-controller="ShipCtrl" name="shippingForm" ng-submit="ship.processForm()" class="shipping-form form-horizontal" novalidate>
+      <form ng-controller="ShipCtrl" name="shippingForm" ng-submit="ship.processShippingForm()" class="shipping-form form-horizontal" novalidate>
       
       <fieldset>
       <!-- Form Name -->
@@ -113,22 +113,39 @@
       </div>
       </fieldset>
 
-        <button class="btn btn-default col-md-12" 
-            ng-click="submitted=true"
-            type="submit"> 
-          <span class="glyphicon glyphicon-plane"></span>
-        </button>
+      <button class="btn btn-default col-md-12" 
+          ng-click="submitted=true"
+          type="submit"> 
+        <span class="glyphicon glyphicon-plane"></span>
+      </button>
 
-
-        <button class="btn btn-default col-md-12" 
-            ng-click="ship.test()"
-            type="button"> 
-          <span class="glyphicon glyphicon-plane">GAYLORD SURPRISE</span>
-        </button>
+      <button class="btn btn-default col-md-12" 
+          ng-click="ship.purchaseShipping()"
+          type="button"> 
+        <span class="glyphicon glyphicon-plane">GAYLORD SURPRISE</span>
+      </button>
         
-        <div class="btn-group-vertical" ng-repeat="rate in ship.rates">
-          <button ng-click="setService(rate)" type="button" class="btn btn-default">{{rate.service}}</button>
-        </div>
+      <div class="modal fade" id="shippingMethods" tabindex="-1" role="dialog" aria-labelledby="shippingModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="shippingModalLabel">Shipping Options</h4>
+            </div>
+            <div class="modal-body">
+
+              <div class="btn-group-vertical" ng-repeat="rate in ship.rates">
+                <li>
+                <button ng-click="selectService(rate)" type="button" class="btn btn-default">{{rate.service}}</button>
+              </div>
+                </li>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+            </div>
+          </div><!-- modal content -->
+        </div> <!-- modal dialog -->
+      </div> <!-- modal -->
 
       </form>
     </div>

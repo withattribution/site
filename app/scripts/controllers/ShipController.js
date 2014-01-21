@@ -6,7 +6,7 @@ angular.module('aokSiteApp')
     $scope.ship = {};
     $scope.formData = {};
 
-    $scope.ship.processForm = function() {
+    $scope.ship.processShippingForm = function() {
       console.log($scope.shippingForm.$valid);
       // if($scope.shippingForm.$valid) {
         $http({
@@ -14,11 +14,12 @@ angular.module('aokSiteApp')
               url     : '/api/ship/rates',
               data    : $.param($scope.formData),  // pass in data as strings
               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
-          }).then(function(response) {
-              // success
-              console.log('you have found success in life');
-              console.log(response);
-              $scope.ship.rates = response.data;
+          })
+            .then(function(response) {
+              if (response.data.status == 'success') {
+                $scope.ship.rates = response.data.data;
+                $('#shippingMethods').modal();
+              };
           }, 
             function(response) { // optional
             // failed
@@ -26,21 +27,16 @@ angular.module('aokSiteApp')
       // }
     }
 
-    $scope.setService = function(rate){
-      console.log("the id: "+rate.id);
-      $scope.ship.service = rate.id;
-      $scope.ship.shipment = rate.shipment_id;
-      $scope.bundle = {
-        ship_id:$scope.ship.shipment,
-        rate_id:$scope.ship.service
-      }
+    $scope.selectService = function(rate){
+      $scope.ship.rateId = rate.id;
+      $scope.ship.shipId = rate.shipment_id;
     }
 
-    $scope.ship.test = function() {
+    $scope.ship.purchaseShipping = function() {
         $http({
               method  : 'POST',
               url     : '/api/ship/purchase',
-              data    : $.param($scope.bundle),  // pass in data as strings
+              data    : $.param({ship_id:$scope.ship.shipId,rate_id:$scope.ship.rateId}),  // pass in data as strings
               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
           })
               .success(function(data) {
