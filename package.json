@@ -6,6 +6,7 @@
     "express-validator": "~1.0.1",
     "connect-livereload": "~0.3.0",
     "ejs": "~0.8.4",
+    "lodash": "~2.4.1",
     "stripe": "~2.3.4",
     "parse": "~1.2.13",
     "node-easypost": "~2.0.4",
