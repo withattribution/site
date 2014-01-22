@@ -5,7 +5,7 @@ angular.module('aokSiteApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'CartService'
+  'ngTouch'
 ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
@@ -14,8 +14,7 @@ angular.module('aokSiteApp', [
         controller: 'MainCtrl'
       })
       .when('/cart', {
-        templateUrl: 'partials/cart',
-        controller: 'CartCtrl'
+        templateUrl: 'partials/cart'
       })
       .otherwise({
         redirectTo: '/'
