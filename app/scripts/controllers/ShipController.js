@@ -7,8 +7,11 @@ angular.module('aokSiteApp')
     $scope.formData = {};
 
     $scope.ship.processShippingForm = function() {
+
       console.log($scope.shippingForm.$valid);
       // if($scope.shippingForm.$valid) {
+        var l = Ladda.create(document.querySelector('#shippingSelection'));
+        l.start();
         $http({
               method  : 'POST',
               url     : '/api/ship/rates',
@@ -19,6 +22,7 @@ angular.module('aokSiteApp')
               if (response.data.status == 'success') {
                 $scope.ship.rates = response.data.data;
                 $('#shippingMethods').modal();
+                l.stop();
               };
           }, 
             function(response) { // optional

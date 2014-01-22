@@ -113,18 +113,12 @@
       </div>
       </fieldset>
 
-      <button class="btn btn-default col-md-12" 
-          ng-click="submitted=true"
-          type="submit"> 
-        <span class="glyphicon glyphicon-plane"></span>
-      </button>
-
-      <button class="btn btn-default col-md-12" 
+<!--       <button class="btn btn-default col-md-12" 
           ng-click="ship.purchaseShipping()"
           type="button"> 
         <span class="glyphicon glyphicon-plane">GAYLORD SURPRISE</span>
-      </button>
-        
+      </button> -->
+
       <div class="modal fade" id="shippingMethods" tabindex="-1" role="dialog" aria-labelledby="shippingModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -133,12 +127,11 @@
               <h4 class="modal-title" id="shippingModalLabel">Shipping Options</h4>
             </div>
             <div class="modal-body">
-
-              <div class="btn-group-vertical" ng-repeat="rate in ship.rates">
-                <li>
-                <button ng-click="selectService(rate)" type="button" class="btn btn-default">{{rate.service}}</button>
+              <div class="btn-group-vertical btn-block" ng-repeat="rate in ship.rates">
+                <button ng-click="selectService(rate)" type="button" class="btn btn-default">
+                  {{rate.service}}
+                </button>
               </div>
-                </li>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
@@ -147,8 +140,20 @@
         </div> <!-- modal dialog -->
       </div> <!-- modal -->
 
+         <button class="btn btn-default ladda-button col-xs-12" 
+              id="shippingSelection"
+              ng-click="submitted=true"
+              data-style="slide-up"
+              data-spinner-color="black">
+              <span class="ladda-label">Shipping Options</span>
+        </button>
+
       </form>
+ 
+
     </div>
+
+
 
     <div class="col-md-6" ng-controller="ChargeCtrl">
       <!-- billing info -->

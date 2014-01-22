@@ -7,8 +7,8 @@ angular.module('aokSiteApp')
       'link': '/'
     },
     {
-      'title': 'About',
-      'link': '#'
+      'title': 'Cart',
+      'link': '/cart'
     },
     {
       'title': 'Contact',
