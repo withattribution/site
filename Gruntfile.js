@@ -256,14 +256,27 @@ module.exports = function (grunt) {
     htmlmin: {
       dist: {
         options: {
-          // collapseWhitespace: true,
-          // collapseBooleanAttributes: true,
-          // removeCommentsFromCDATA: true,
-          // removeOptionalTags: true
+          removeCommentsFromCDATA: true,
+          removeCDATASectionsFromCDATA: true,
+          collapseBooleanAttributes: true,
+          removeRedundantAttributes: true,
         },
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/views',
+          src: ['*.html', 'partials/*.html'],
+          dest: '<%= yeoman.dist %>/views'
+        }]
+      },
+      deploy: {
+        options: {
+          removeAttributeQuotes: true,
+          removeComments: true,
+          collapseWhitespace: true
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.dist %>/views',
           src: ['*.html', 'partials/*.html'],
           dest: '<%= yeoman.dist %>/views'
         }]
@@ -345,8 +358,7 @@ module.exports = function (grunt) {
       dist: [
         'compass:dist',
         'imagemin',
-        'svgmin',
-        'htmlmin'
+        'svgmin'
       ]
     },
 
@@ -430,7 +442,9 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'rev',
-    'usemin'
+    'htmlmin:dist',
+    'usemin',
+    'htmlmin:deploy'
   ]);
 
   grunt.registerTask('heroku', function () {
