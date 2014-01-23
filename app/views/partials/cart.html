@@ -250,7 +250,7 @@
         <li class="hbox">
           <a class="local">Total</a>
           <span class="spacer boxFlex"></span>
-          {{ charge.total | currency }}
+          {{ charge.total + charge.shipping | currency }}
         </li>
       </ul>
 
