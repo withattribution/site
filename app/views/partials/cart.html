@@ -116,32 +116,32 @@
       </div>
       </fieldset>
 
-<!--       <button class="btn btn-default col-md-12" 
+      <button class="btn btn-default col-md-12" 
           ng-click="ship.purchaseShipping()"
           type="button"> 
         <span class="glyphicon glyphicon-plane">GAYLORD SURPRISE</span>
-      </button> -->
+      </button>
 
-      <div class="modal fade" id="shippingMethods" tabindex="-1" role="dialog" aria-labelledby="shippingModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 class="modal-title" id="shippingModalLabel">Shipping Options</h4>
-            </div>
-            <div class="modal-body">
-              <div class="btn-group-vertical btn-block" ng-repeat="rate in ship.rates">
-                <button ng-click="selectService(rate)" type="button" class="btn btn-default">
-                  {{rate.service}}
-                </button>
+        <div class="modal fade" id="shippingMethods" tabindex="-1" role="dialog" aria-labelledby="shippingModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="shippingModalLabel">Shipping Options</h4>
               </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
-            </div>
-          </div><!-- modal content -->
-        </div> <!-- modal dialog -->
-      </div> <!-- modal -->
+              <div class="modal-body">
+                <div class="btn-group-vertical btn-block" ng-repeat="rate in ship.rates">
+                  <button ng-click="selectService(rate)" type="button" class="btn btn-default">
+                    {{rate.service}} <span class="pull-right">{{ rate.rate | currency }} </span>
+                  </button>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+              </div>
+            </div><!-- modal content -->
+          </div> <!-- modal dialog -->
+        </div> <!-- modal -->
 
          <button class="btn btn-default ladda-button col-xs-12" 
               id="shippingSelection"
@@ -218,7 +218,7 @@
                    class="form-control" 
                    placeholder="MM / YY" 
                    maxlength="9"
-                   type="text" 
+                   type="tel" 
                    required>
           </div>
         </div>
@@ -242,15 +242,15 @@
       </div>
       
       <ul class="col-xs-12">
-        <li class="hbox">
+        <li class="hbox" ng-show="charge.shipping">
           <a class="local">Shipping</a>
           <span class="spacer boxFlex"></span>
-          $99.99
+          {{ charge.shipping | currency }}
         </li>
         <li class="hbox">
           <a class="local">Total</a>
           <span class="spacer boxFlex"></span>
-          {{charge.total | currency}}
+          {{ charge.total | currency }}
         </li>
       </ul>
 
