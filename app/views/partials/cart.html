@@ -99,7 +99,7 @@
         </div>
       <!-- state -->
         <div class="col-md-6">
-          <div class="input-group" ng-class="{'has-error':submitted && shippingForm.state.$invalid}">
+          <div class="input-group mobile-row-padding" ng-class="{'has-error':submitted && shippingForm.state.$invalid}">
             <span class="input-group-addon">State</span>
             <input ng-model="formData.state" name="state" class="form-control" type="text" required>
           </div>
@@ -224,7 +224,7 @@
         </div>
         <!-- CVC -->
         <div class="col-md-6">
-          <div class="input-group" ng-class="{'has-error': (!chargeForm.cvc.$valid && !chargeForm.cvc.$pristine) || (attempted.cvc && !chargeForm.cvc.$valid && !chargeForm.cvc.$pristine) }">
+          <div class="input-group mobile-row-padding" ng-class="{'has-error': (!chargeForm.cvc.$valid && !chargeForm.cvc.$pristine) || (attempted.cvc && !chargeForm.cvc.$valid && !chargeForm.cvc.$pristine) }">
             <span class="input-group-addon">
               <span class="glyphicon glyphicon-lock"></span>
             </span>

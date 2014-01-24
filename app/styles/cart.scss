@@ -1,3 +1,11 @@
+@import 'sass-bootstrap/lib/bootstrap';
+
+.mobile-row-padding {
+  @media (max-width: $screen-md-min) {
+    margin-top: 15px;
+  }
+}
+
 .cart-quantity {
 /*  width:40px !important;
 */  padding: 17px 14px;
