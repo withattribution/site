@@ -55,63 +55,78 @@
       <legend class="cartLegend"><span class="glyphicon glyphicon-transfer"></span>SHIPPING</legend>
       <!-- first name -->
       <div class="form-group">
-        <div class="col-md-12">
-          <div class="input-group" ng-class="{'has-error':submitted && shippingForm.firstName.$invalid}">
-            <span class="input-group-addon">First Name</span>
-            <input ng-model="formData.firstName" name="firstName" class="form-control" placeholder="" type="text" required>
-          </div>
+        <div class="col-md-12" 
+             ng-class="{'has-error':submitted && shippingForm.firstName.$invalid}">
+            <input ng-model="formData.firstName" 
+                   name="firstName" 
+                   class="form-control" 
+                   placeholder="first name" 
+                   type="text" 
+                   required>
         </div>
       </div>
       <!-- last name -->
       <div class="form-group">
-        <div class="col-md-12">
-          <div class="input-group" ng-class="{'has-error':submitted && shippingForm.lastName.$invalid}">
-            <span class="input-group-addon">Last Name</span>
-            <input ng-model="formData.lastName" name="lastName" class="form-control" placeholder="" type="text" required>
-          </div>
+        <div class="col-md-12"
+             ng-class="{'has-error':submitted && shippingForm.lastName.$invalid}">
+            <input ng-model="formData.lastName" 
+                   name="lastName" 
+                   class="form-control" 
+                   placeholder="last name" 
+                   type="text" 
+                   required>
         </div>
       </div>
       <!-- line 1 -->
       <div class="form-group">
-        <div class="col-md-12">
-          <div class="input-group" ng-class="{'has-error':submitted && shippingForm.lineOne.$invalid}">
-            <span class="input-group-addon">Address Line 1</span>
-            <input ng-model="formData.lineOne" name="lineOne" class="form-control" placeholder="" type="text" required>
-          </div>
+        <div class="col-md-12"
+             ng-class="{'has-error':submitted && shippingForm.lineOne.$invalid}">
+            <input ng-model="formData.lineOne" 
+                   name="lineOne" 
+                   class="form-control" 
+                   placeholder="address line one" 
+                   type="text" 
+                   required>
         </div>
       </div>
       <!-- line 2 -->
       <div class="form-group">
         <div class="col-md-12">
-          <div class="input-group">
-            <span class="input-group-addon">Address Line 2</span>
-            <input ng-model="formData.lineTwo" name="lineTwo" class="form-control" placeholder="optional" type="text">
-          </div>
+            <input ng-model="formData.lineTwo" name="lineTwo" class="form-control" placeholder="address line two (optional)" type="text">
         </div>
       </div>
       <!-- city -->
       <div class="form-group">
-        <div class="col-md-6">
-          <div class="input-group" ng-class="{'has-error':submitted && shippingForm.city.$invalid}">
-            <span class="input-group-addon">City</span>
-            <input ng-model="formData.city" name="city" class="form-control" type="text" required>
-          </div>
+        <div class="col-md-6" 
+             ng-class="{'has-error':submitted && shippingForm.city.$invalid}">
+            <input ng-model="formData.city" 
+                   name="city" 
+                   class="form-control" 
+                   type="text"
+                   placeholder="city"  
+                   required>
         </div>
       <!-- state -->
-        <div class="col-md-6">
-          <div class="input-group mobile-row-padding" ng-class="{'has-error':submitted && shippingForm.state.$invalid}">
-            <span class="input-group-addon">State</span>
-            <input ng-model="formData.state" name="state" class="form-control" type="text" required>
-          </div>
+        <div class="col-md-6 mobile-row-padding"
+             ng-class="{'has-error':submitted && shippingForm.state.$invalid}">
+            <input ng-model="formData.state" 
+                   name="state" 
+                   class="form-control" 
+                   type="text" 
+                   placeholder="state" 
+                   required>
         </div>
       </div>
       <!-- zip code -->
       <div class="form-group">
-        <div class="col-md-12">
-          <div class="input-group" ng-class="{'has-error':submitted && shippingForm.zipcode.$invalid}">
-            <span class="input-group-addon">Zip Code</span>
-            <input ng-model="formData.zipcode" name="zipcode" class="form-control" type="number" required>
-          </div>
+        <div class="col-md-12"
+             ng-class="{'has-error':submitted && shippingForm.zipcode.$invalid}">
+            <input ng-model="formData.zipcode" 
+                   name="zipcode" 
+                   class="form-control" 
+                   type="number" 
+                   placeholder="zipcode" 
+                   required>
         </div>
       </div>
       </fieldset>
@@ -170,7 +185,7 @@
       <div class="form-group">
         <div class="col-md-12">
           <div class="input-group" ng-class="{'has-error': attempted.email && !chargeForm.email.$valid && !chargeForm.email.$pristine }">
-            <span class="input-group-addon">
+            <span class="input-group-addon cart-addon">
               <span class="glyphicon glyphicon-envelope"></span>
             </span>
             <input name="email"
@@ -189,7 +204,7 @@
           <div class="input-group"
                ng-class="{'has-error': (!chargeForm.cardNumber.$valid && !chargeForm.cardNumber.$pristine) || 
                (attempted.card && !charge.validCard && !chargeForm.cardNumber.$pristine) }">
-            <span class="input-group-addon">
+            <span class="input-group-addon cart-addon">
               <span class="glyphicon glyphicon-credit-card"></span>
             </span>
             <input ng-blur="attempted.card=true"
@@ -207,7 +222,7 @@
       <div class="form-group">
         <div class="col-md-6">
           <div class="input-group" ng-class="{'has-error': attempted.exp && !charge.validEXP && !chargeForm.exp.$pristine}">
-            <span class="input-group-addon">
+            <span class="input-group-addon cart-addon">
               <span class="glyphicon glyphicon-calendar"></span>
             </span>
             <input name="exp"
@@ -225,7 +240,7 @@
         <!-- CVC -->
         <div class="col-md-6">
           <div class="input-group mobile-row-padding" ng-class="{'has-error': (!chargeForm.cvc.$valid && !chargeForm.cvc.$pristine) || (attempted.cvc && !chargeForm.cvc.$valid && !chargeForm.cvc.$pristine) }">
-            <span class="input-group-addon">
+            <span class="input-group-addon cart-addon">
               <span class="glyphicon glyphicon-lock"></span>
             </span>
             <input name="cvc"
