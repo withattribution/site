@@ -1,0 +1,39 @@
+//
+// Icon Font: aokfont
+//
+
+@font-face {
+  font-family: "aokfont";
+  src: url("../fonts/aokfont_3be07f87e7c525b4ca9de77e5bbd95e9.eot");
+  src: url("../fonts/aokfont_3be07f87e7c525b4ca9de77e5bbd95e9.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/aokfont_3be07f87e7c525b4ca9de77e5bbd95e9.woff") format("woff"),
+       url("../fonts/aokfont_3be07f87e7c525b4ca9de77e5bbd95e9.ttf") format("truetype"),
+       url("../fonts/aokfont_3be07f87e7c525b4ca9de77e5bbd95e9.svg#aokfont") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "aokfont";
+    src: url("../fonts/aokfont_3be07f87e7c525b4ca9de77e5bbd95e9.svg#aokfont") format("svg");
+  }
+}
+
+[data-icon]:before { content: attr(data-icon); }
+
+[data-icon]:before,
+.icon-aok-logo:before {
+  display: inline-block;
+  font-family: "aokfont";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+.icon-aok-logo:before { content: "\f103"; }

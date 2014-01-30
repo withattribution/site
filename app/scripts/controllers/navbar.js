@@ -3,16 +3,19 @@
 angular.module('aokSiteApp')
   .controller('NavbarCtrl', function ($scope, $location) {
     $scope.menu = [{
-      'title': 'Home',
-      'link': '/'
+      'title': '',
+      'link': '/',
+      'class': 'brand-logo-aok'
     },
     {
-      'title': 'Cart',
-      'link': '/cart'
+      'title': ' | ',
+      'link': '/cart',
+      'class': ''
     },
     {
-      'title': 'Contact',
-      'link': '#'
+      'title': 'ABOUT',
+      'link': '#',
+      'class': ''
     }];
 
     $scope.isActive = function(route) {
