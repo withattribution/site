@@ -13,12 +13,11 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 }
 
 @mixin icon-font($font-name) {
-    @extend .icon-#{$font-name};
+  @extend .icon-#{$font-name};
 }
 
 .brand-logo-aok {
   @include icon-font(aok-logo){}
-  text-decoration:none;
   font-size: 120px;
   color: #000;
   &:hover {
@@ -26,40 +25,36 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
   }
 }
 
+/* skewed text treatment */
 @function textShadowString($offset, $color) {
   $text-shadow:();
 
   //loop through however many numbers ($offset)
-  @for $i from 0 through $offset{
-
+  @for $i from 0 through $offset
+  {
     $string: -1*($i+1)+px $i+px 0px $color; 
     $text-shadow: append($text-shadow, $string, comma);
-
   }
   // return the string of all of these values
   @return $text-shadow;
 }
 
+
 // a:hover {text-decoration:none !important; }
 a:link {
   text-decoration:none !important;
-  color:#FFF !important;
-  text-decoration-color: #FFF !important;
+  // color:#FFF !important;
+  // text-decoration-color: #FFF !important;
 }
 
 
 
 a:visited {
   text-decoration:none !important;
-  text-decoration-color: #FFF !important;
+  // text-decoration-color: #FFF !important;
 }
-// a:hover {text-decoration:underline !important;}
-// a:active {text-decoration:underline !important;}
 
-.about{
-  a {
-  color:#FFF !important;
-}
+  /* this is just here for reference and because i am lazy as fuck */
   // a:visited {
   //   text-decoration: none;
   // }
@@ -75,6 +70,21 @@ a:visited {
   // a:active {color:#FFF;}  /* selected link */
   // text-decoration:none !important;
 
+.about{
+  a {
+    color:#FFF !important;
+  }
+  a:hover {
+    color:#000 !important;
+  }
+  a:visited {
+    color: #FFF;
+    text-decoration: none;
+  }
+  a:active {
+    color: #FFF;
+  }
+
   text-align:center;
   color:#FFF !important;
   margin-left: 20px; 
@@ -88,7 +98,7 @@ a:visited {
   text-shadow:textShadowString(10, rgba(0,0,0,0.3));
   transform:skew(8deg);
   &:hover {
-    color:#000;
+    color:#000 !important;
   }
 }
 
