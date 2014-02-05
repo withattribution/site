@@ -17,7 +17,6 @@ angular.module('aokSiteApp')
       'link': '#',
       'class': ''
     }];
-
     $scope.isActive = function(route) {
       return route === $location.path();
     };
