@@ -1,12 +1,7 @@
-<div ng-controller="TumblrCtrl" class="container">
-
-  <div masonry item-selector=".aok-brick" >
-    <div masonry-brick class="aok-brick" ng-repeat="item in tumblr.items">
-      <img ng-src="{{ item.photos[0].alt_sizes[2].url }}" alt="A masonry brick">
+<div ng-controller="TumblrCtrl">
+  <div class="masonry" masonry column-width=".grid-sizer" item-selector=".item" >
+    <div masonry-brick class="item" ng-repeat="item in tumblr.items">
+      <img ng-src="{{ item.photos[0].alt_sizes[0].url }}" alt="A masonry brick">
     </div>
   </div>
-
 </div>
-
-
-
