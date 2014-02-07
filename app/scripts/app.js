@@ -7,6 +7,7 @@ angular.module('aokSiteApp', [
   'ngRoute',
   'ngFitText',
   'wu.masonry',
+  'infinite-scroll',
   'ngTouch'
 ])
   .config(function ($routeProvider, $locationProvider) {

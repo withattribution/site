@@ -3,6 +3,11 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 @import 'sass-bootstrap/lib/bootstrap';
 @import "../fonts/aokfont";
 
+html,body {
+  overflow-x: hidden; 
+  overflow-y: auto;
+}
+
 /* http://css-tricks.com/perfect-full-page-background-image/ */
 .full-screen-gif {
   background: url(http://aok-assets.s3.amazonaws.com/aok-site/images/dart.gif) no-repeat center center fixed; 
@@ -53,14 +58,6 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 .split-image {
   @include img-responsive();
   @include make-sm-column(6);
-
-  @media (min-width: $screen-sm-min) {
-    border: 1px solid red;
-  }
-
-  margin: 0 auto !important;
-  padding: 0px !important;
-  // margin: 0px !important;
 }
 
 /* skewed text treatment */
@@ -128,18 +125,10 @@ a:visited {text-decoration:none !important;}
     padding: 0.2em 0;
 }
 
-
-// .starter {
-//   position:relative;
-//   top:875px;
-// }
-
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
     max-width: 930px;
-    // margin: 0px !important;
-    // padding: 0px !important;
   }
   /* Remove the padding we set earlier */
   .header,
