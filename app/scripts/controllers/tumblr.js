@@ -36,25 +36,4 @@ angular.module('aokSiteApp')
             console.log('fucking tumblr fail right?');
          });
     }
-
-    var init = function() {
-      $http({
-          url: '/api/grid', 
-          method: "GET",
-          params: { limit:$scope.tumblr.limit, tag:'' }
-       }).then(function(response){
-
-          for (var i = 0; i < response.data.length; i++) 
-          {
-            $scope.tumblr.items.push(response.data[i]);
-          }
-
-          $scope.tumblr.offset += $scope.tumblr.limit;
-
-       }, function(response){
-          console.log('fucking tumblr fail right?');
-       });
-    };
-
-    init();
 });
