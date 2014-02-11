@@ -16,22 +16,24 @@ html,body {
     width: 95%;
     margin: 0px auto 5px auto;
   }
-    @media (min-width: $screen-sm) {
+
+  @media (min-width: $screen-sm) {
     hr {
       width: 80%;
     }
-      position: absolute;
-      top:20%;
-      max-width: 50.3%;
-      left:60%;
+    position: absolute;
+    top:20%;
+    max-width: 50.3%;
+    left:60%;
   }
 }
 
 .product-name {
-  margin: 5px auto 5px auto;
+  margin: 0px auto 5px auto;
   text-align:center;
   font-family: 'Raleway', sans-serif;
   font-weight: 100;
+  font-size: 4.0em;
   color: black;
 }
 
@@ -53,7 +55,7 @@ html,body {
 .product-button {
   font-family: 'Raleway', sans-serif;
   font-weight: 400; 
-  font-size: 1.0em;
+  font-size: 1.6em;
 
   text-align: center;
   vertical-align: middle;
@@ -61,7 +63,7 @@ html,body {
   display: inline-block;
 
   margin: 0px auto 10px auto;
-  padding: 5px 10px 5px 10px;
+  padding: 5px 10px 0px 10px;
 
   cursor: pointer;
   background-image: none;
@@ -78,7 +80,7 @@ html,body {
   }
 
   @media (min-width: $screen-sm) {
-    width: 40%;
+    width: 55%;
     margin: 0 auto;
   }
 }
@@ -114,7 +116,7 @@ html,body {
   font-size: 120px;
   color: #FFF;
   &:hover {
-    color:$aok-green;
+    color:$aok-green !important;
   }
 }
 
@@ -147,7 +149,7 @@ html,body {
     text-align: center;
   }
   position: fixed;
-  top:5%;
+  top:3%;
   display: block;
   width: 100%;
   color: #FFF;
@@ -168,15 +170,42 @@ html,body {
 }
 
 .large-backdrop {
+  position:relative;
   width: 100%;
   height: auto;
 }
 
+.social-buttons {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  @media (max-width: $screen-sm) {
+    position: static;
+  }
+
+  .glyphicon-envelope {
+    position:relative;
+    font-size: 18px !important;
+  }
+
+  .tumblr, .twitter, .glyphicon-envelope {
+    font-size: 24px;
+    color: white;
+    margin: 0px 10px 0px 10px;
+    &:hover {
+      color: $aok-green;
+    }
+    @media (max-width: $screen-sm) {
+      position: static;
+      bottom: 0px;
+      color: black;
+    }
+  }
+}
 
 a:link {text-decoration:none !important;}
 a:visited {text-decoration:none !important;}
 
-.about{
   a {
     color:#FFF !important;
   }
@@ -184,20 +213,19 @@ a:visited {text-decoration:none !important;}
     color:#000 !important;
   }
   a:visited {
-    color: #FFF;
-    text-decoration: none;
+    color: #FFF !important;
+    text-decoration: none !important;
   }
   a:active {
-    color: #FFF;
+    color: #FFF !important;
   }
 
+.about{
   text-align:center;
   color:#FFF !important;
   margin-left: 20px; 
   position: relative;
   top:-40px;
-  // text-transform:uppercase;
-  // font-family:'Helvetica Neue';
   font-family: 'Raleway', sans-serif;
   font-weight:100;
   font-size:2.9em;
@@ -240,8 +268,9 @@ a:visited {text-decoration:none !important;}
 
 /* sweet sweet masonry styles */
 .masonry {
-  background: #EEE;
+  background: #000;
   width: 100%;
+
 }
 
 .masonry .item,

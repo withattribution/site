@@ -1,16 +1,26 @@
 <div ng-include="'partials/navbar'"></div>
-<img class="large-backdrop fullheight-mobile" src="http://aok-assets.s3.amazonaws.com/aok-site/images/dart.gif">
+
+<div class="balls large-backdrop">
+  <img class="large-backdrop" src="http://aok-assets.s3.amazonaws.com/aok-site/images/dart.gif">
+  <div class="text-center social-buttons">
+    <a href="https://twitter.com/studioaok"><span class="icon-aok-twitter twitter"></span></a>
+    <a href="http://everythingsgonnabeaok.tumblr.com"><span class="icon-aok-tumblr tumblr"></span></a>
+    <a href="mailto:weare@a-ok.so?Subject=Holla!" target="_top"><span class="glyphicon glyphicon-envelope"></span></a>
+  </div>
+</div>
+
 <div class="aok-product">
   <h1 class="product-name">DART</h1>
   <hr>
   <p class="product-description">dart is a thing that you use to store your most treasured last cigarette and it is also good because it makes your god damned friends jealous and it makes whatever gender of human want to do weird stuff to your genitals.
   </p>
   <div class="text-center">
-    <button ng-click="charge.checkout()" 
-          class="btn-default product-button" 
-          type="button">
+    <button class="btn-default product-button" 
+            type="button">
+    <span class="icon-aok-dart"></span>
   GET DART
-  </button>  
+  </button>
   </div>
 </div>
+
 <div ng-include="'partials/tumblr'"></div>
