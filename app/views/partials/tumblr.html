@@ -1,7 +1,7 @@
 <div ng-controller="TumblrCtrl">
   <div class="masonry" masonry column-width=".grid-sizer" item-selector=".item" infinite-scroll="addTumblrPosts()" infinite-scroll-disabled='{{ busy || endOf }}' infinite-scroll-distance="1" infinite-scroll-immediate-check='true'>
     <div masonry-brick class="item" ng-repeat="item in tumblr.items">
-      <img ng-src="{{ item.photos[0].alt_sizes[1].url }}" alt="A masonry brick">
+      <img ng-src="{{ item.type === 'photo' ? item.photo_url[1] : item.thumbnail_url }}" alt="A masonry brick">
     </div>
   </div>
 </div>
