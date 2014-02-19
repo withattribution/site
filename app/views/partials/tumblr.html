@@ -1,7 +1,20 @@
 <div ng-controller="TumblrCtrl">
   <div class="masonry" masonry column-width=".grid-sizer" item-selector=".item" infinite-scroll="addTumblrPosts()" infinite-scroll-disabled='{{ busy || endOf }}' infinite-scroll-distance="1" infinite-scroll-immediate-check='true'>
     <div masonry-brick class="item" ng-repeat="item in tumblr.items">
-      <img ng-src="{{ item.type === 'photo' ? item.photo_url[1] : item.thumbnail_url }}" alt="A masonry brick">
+      <div ng-click="gridOverlay(item,$event)">
+        <div class="grid-overlay" >
+          <button type="button" class="close grid-close" aria-hidden="true">&times;</button>
+          <ul ng-if="overlayIsEnabled" rn-carousel class="image" rn-carousel-control="true" rn-carousel-index="slideIndex">
+            <li ng-repeat="item in tumblr.items">
+              <div class="layer">
+                <img class="large-backdrop" ng-src="{{ item.type === 'photo' ? item.mobile_photo_url : item.thumbnail_url }}">
+              </div>
+              <p class="caption">{{item.caption}}</p>
+            </li>
+          </ul>
+        </div> <!-- end grid overlay -->
+        <img ng-click="$parent.slideIndex=$index" ng-src="{{ item.type === 'photo' ? item.mobile_photo_url : item.thumbnail_url }}" alt="A masonry brick">
+      </div>
     </div>
   </div>
 </div>

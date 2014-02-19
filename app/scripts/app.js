@@ -8,7 +8,8 @@ angular.module('aokSiteApp', [
   'ngFitText',
   'wu.masonry',
   'infinite-scroll',
-  'ngTouch'
+  'ngTouch',
+  'angular-carousel'
 ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
