@@ -6,10 +6,10 @@ angular.module('aokSiteApp')
     $scope.grid = {};
     $scope.grid.tumblrPosts = [];
 
-    var t = TumblrService.instance();
+    var tumblr = TumblrService.instance();
 
     $scope.addTumblrPosts = function() {
-      t.query(function(posts){
+      tumblr.query(function(posts){
         $scope.grid.tumblrPosts = posts;
       });
     }

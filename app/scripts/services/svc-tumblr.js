@@ -11,22 +11,21 @@ angular.module('aokSiteApp')
         endOf = false;
 
       this.defaults = { 
-        tagged: '',   /* override tagged to return tagged results */
+        tagged: '',    /* override tagged to return tagged results */
         limit: 5      /* default limit */
       };
 
-      this.query = function(options, responseHandler) {
+      this.query = function(option, responseHandler) {
         if (endOf || busy) { return };
           busy = true;
 
-          if (arguments.length < 2 ) 
-          {
-            options = undefined;
-            responseHandler = arguments[0];
-          }
+          if (typeof option != 'object' && typeof option == 'function') { responseHandler = arguments[0]; };
 
-          var limit = (typeof optionalArg === "undefined") ? this.defaults.limit : options.limit;
-          var tagged = (typeof optionalArg === "undefined") ? this.defaults.tagged : options.tagged;
+          var options = {};
+          angular.extend(options,this.defaults,option);
+
+          var limit = options.limit;
+          var tagged = options.tagged;
 
           $http({
               url: '/api/grid', 
