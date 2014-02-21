@@ -1,43 +1,17 @@
 'use strict';
 
 angular.module('aokSiteApp')
-  .controller('TumblrCtrl', function ($scope, $http) {
-    $scope.tumblr = {};
-    $scope.tumblr.items = [];
+  .controller('GridCtrl', function ($scope, TumblrService) {
 
-    $scope.tumblr.offset = 0;
-    $scope.tumblr.limit = 5;
-    $scope.busy = false;
-    $scope.endOf = false;
+    $scope.grid = {};
+    $scope.grid.tumblrPosts = [];
 
-    $scope.overlayIsEnabled = false;
-    $scope.selectedGridElement = false;
+    var t = TumblrService.instance();
 
     $scope.addTumblrPosts = function() {
-        if ($scope.busy || $scope.endOf) return;
-
-        $scope.busy = true;
-
-        $http({
-            url : '/api/grid', 
-            method : "GET",
-            params : { limit:$scope.tumblr.limit, tag:'', offset:$scope.tumblr.offset }
-         }).then(function(response){
-            if (response.data.length > 0) {
-              for (var i = 0; i < response.data.length; i++) 
-              {
-                $scope.tumblr.items.push(response.data[i]);
-              }
-              $scope.tumblr.offset += $scope.tumblr.limit;
-            }else {
-              /* service has run dry -- no more requests please */
-              $scope.endOf = true; 
-            }
-            $scope.busy = false;
-         }, function(response){
-            $scope.busy = false;
-            console.log('fucking tumblr fail right?');
-         });
+      t.query(function(posts){
+        $scope.grid.tumblrPosts = posts;
+      });
     }
 
     var $window = $(window),
@@ -66,9 +40,10 @@ angular.module('aokSiteApp')
 
         $overlay.css({
           clip : clipPropFirst,
-          transition : 'opacity 0.2s ease',
+          transition : 'opacity 0.1s ease',
           opacity : 1,
-          zIndex : 999,
+          zIndex : 1000,
+          // position : 'fixed',
           pointerEvents : 'auto'
         });
 
@@ -77,7 +52,7 @@ angular.module('aokSiteApp')
             setTimeout( function() {
               $overlay.css({
                 clip : clipPropLast,
-                transition : 'all 0.2s ease'
+                transition : 'all 0.1s ease'
               })
               .on('transitionend', function() {
                 $overlay.off( 'transitionend' );
@@ -111,8 +86,10 @@ angular.module('aokSiteApp')
                   $overlay.off('transitionend')
                     .css({ 
                       clip : clipPropLast,
+                      // position: 'static',
                       zIndex : -1
                     });
+                  $overlay.children().remove();
                   $scope.selectedGridElement = false;
               });
             }, 25 );

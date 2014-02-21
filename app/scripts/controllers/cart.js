@@ -10,7 +10,10 @@ angular.module('aokSiteApp')
     });
 
     $scope.cartUpdateQuantity = function(item) {
-      CheckOutService.cart.update({id:item.objectId,quantity:parseInt(item.quantity)},function(){
+      CheckOutService.cart.update({
+        id: item.objectId,
+        quantity: parseInt(item.quantity)
+      },function(){
         CheckOutService.updateCartTotal($scope.cart.items);
       });
     }

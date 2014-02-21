@@ -1,20 +1,49 @@
-<div ng-controller="TumblrCtrl">
-  <div class="masonry" masonry column-width=".grid-sizer" item-selector=".item" infinite-scroll="addTumblrPosts()" infinite-scroll-disabled='{{ busy || endOf }}' infinite-scroll-distance="1" infinite-scroll-immediate-check='true'>
-    <div masonry-brick class="item" ng-repeat="item in tumblr.items">
-      <div ng-click="gridOverlay(item,$event)">
-        <div class="grid-overlay" >
-          <button type="button" class="close grid-close" aria-hidden="true">&times;</button>
-          <ul ng-if="overlayIsEnabled" rn-carousel class="image" rn-carousel-control="true" rn-carousel-index="slideIndex">
-            <li ng-repeat="item in tumblr.items">
+<div ng-controller="GridCtrl">
+
+  <div class="modal fade" id="shippingMethods" tabindex="-1" role="dialog" aria-labelledby="shippingModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="shippingModalLabel">Shipping Options</h4>
+        </div>
+        <div class="modal-body">
+          <ul rn-carousel class="image" rn-carousel-buffered="true" rn-carousel-control="true">
+            <li ng-repeat="item in grid.tumblrPosts">
               <div class="layer">
                 <img class="large-backdrop" ng-src="{{ item.type === 'photo' ? item.mobile_photo_url : item.thumbnail_url }}">
               </div>
               <p class="caption">{{item.caption}}</p>
             </li>
           </ul>
-        </div> <!-- end grid overlay -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+        </div>
+      </div><!-- modal content -->
+    </div> <!-- modal dialog -->
+  </div> <!-- modal -->
+
+  <div data-toggle="modal" data-target="#shippingMethods">Launch modal</div>
+
+  <div class="masonry" masonry column-width=".grid-sizer" item-selector=".item" infinite-scroll="addTumblrPosts()"  infinite-scroll-distance="1" infinite-scroll-immediate-check='true'>
+    <div masonry-brick class="item" ng-repeat="item in grid.tumblrPosts">
+<!--       <div ng-click="gridOverlay(item,$event)">
+        <div class="grid-overlay">
+          <button type="button" class="close grid-close" aria-hidden="true">&times;</button>
+          <ul ng-if="overlayIsEnabled" rn-carousel class="image" rn-carousel-buffered="true" rn-carousel-control="true" rn-carousel-index="slideIndex">
+            <li ng-repeat="item in grid.tumblrPosts">
+              <div class="layer">
+                <img class="large-backdrop" ng-src="{{ item.type === 'photo' ? item.mobile_photo_url : item.thumbnail_url }}">
+              </div>
+              <p class="caption">{{item.caption}}</p>
+            </li>
+          </ul>
+        </div>  -->
+        <!-- end grid overlay -->
+ <!-- ng-click="$parent.slideIndex=$index" -->
         <img ng-click="$parent.slideIndex=$index" ng-src="{{ item.type === 'photo' ? item.mobile_photo_url : item.thumbnail_url }}" alt="A masonry brick">
-      </div>
+      <!-- </div> -->
     </div>
   </div>
 </div>
