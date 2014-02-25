@@ -6,6 +6,9 @@ angular.module('aokSiteApp')
     $scope.grid = {};
     $scope.grid.tumblrPosts = [];
 
+    $scope.show = false;
+    $scope.slideIndex = 0;
+    
     var tumblr = TumblrService.instance();
 
     $scope.addTumblrPosts = function() {
@@ -14,123 +17,44 @@ angular.module('aokSiteApp')
       });
     }
 
-    var $window = $(window),
-        $body = $('BODY');
-
-    var winsize = getWindowSize();
-
-    $scope.gridOverlay = function (item,event) {
-      
-      if ($scope.overlayIsEnabled) {
-        //ignore non-targeted clicks
-        return false;
-      }
-      
-      $scope.overlayIsEnabled = true;
-
-      var $selected = $(event.currentTarget),
-          $close = $selected.find('button.close'),
-          $overlay = $selected.children('div.grid-overlay');
-
-      $scope.selectedGridElement = $selected;
-
-      var layoutProp = getItemLayoutProp( $selected ),
-        clipPropFirst = 'rect(' + layoutProp.top + 'px ' + ( layoutProp.left + layoutProp.width ) + 'px ' + ( layoutProp.top + layoutProp.height ) + 'px ' + layoutProp.left + 'px)',
-        clipPropLast = 'rect(0px ' + winsize.width + 'px ' + winsize.height + 'px 0px)';
-
-        $overlay.css({
-          clip : clipPropFirst,
-          transition : 'opacity 0.1s ease',
-          opacity : 1,
-          zIndex : 1000,
-          // position : 'fixed',
-          pointerEvents : 'auto'
-        });
-
-        $overlay.on('transitionend', function() {
-          $overlay.off('transitionend');
-            setTimeout( function() {
-              $overlay.css({
-                clip : clipPropLast,
-                transition : 'all 0.1s ease'
-              })
-              .on('transitionend', function() {
-                $overlay.off( 'transitionend' );
-                $body.css({'overflow-y' : 'hidden'});
-              });
-            }, 25 );
-        });
-
-        $close.on('click', function() {
-          
-          $body.css('overflow-y','auto');
-
-          var layoutProp = getItemLayoutProp( $selected ),
-            clipPropFirst = 'rect(' + layoutProp.top + 'px ' + ( layoutProp.left + layoutProp.width ) + 'px ' + ( layoutProp.top + layoutProp.height ) + 'px ' + layoutProp.left + 'px)',
-            clipPropLast = 'auto';
-
-          $overlay.css( {
-            clip : clipPropFirst,
-            transition : 'all 0.2s ease',
-            opacity : 1,
-            pointerEvents : 'none'
-          });
-
-          $overlay.on('transitionend', function() {
-            $overlay.off('transitionend');
-            setTimeout(function() {
-              $overlay.css({
-                  opacity : 0
-                })
-                .on('transitionend', function() {
-                  $overlay.off('transitionend')
-                    .css({ 
-                      clip : clipPropLast,
-                      // position: 'static',
-                      zIndex : -1
-                    });
-                  $overlay.children().remove();
-                  $scope.selectedGridElement = false;
-              });
-            }, 25 );
-          });
-
-        $scope.overlayIsEnabled = false;
-        return false;
-      });
+    $scope.setShown = function(selectedIndex) {
+        // console.log("selected: "+selectedIndex);
+        $scope.show = !$scope.show;
+        $scope.slideIndex = selectedIndex;
     }
 
-    function getItemLayoutProp( $selected ) {
-      var scrollT = $window.scrollTop(),
-          scrollL = $window.scrollLeft(),
-          itemOffset = $selected.offset();
+    /* gif visibility test */
+    var foo = document.getElementById('foo');
 
-      return {
-        left : itemOffset.left - scrollL,
-        top : itemOffset.top - scrollT,
-        width : $selected.outerWidth(),
-        height : $selected.outerHeight()
-      };
+    var $largeGif = $('img#foo');
+
+    function elementVisibilityMayChange (el) {
+        return function () {
+            if ( !isElementInViewport(el) ) {
+                // console.log('is not visible now');
+                $largeGif.css({opacity:0});
+            }else {
+              $largeGif.css({opacity:1});
+              // console.log('super visible now!');
+            }
+        }
     }
 
-    $(window).on('resize', function() { 
-      winsize = getWindowSize();
-      if( $scope.selectedGridElement ) {
-        // $scope.selectedGridElement.children( 'div.grid-overlay' ).css( 'clip', 'rect(0px ' + winsize.width + 'px ' + winsize.height + 'px 0px)' );
-      $scope.selectedGridElement.children('div.grid-overlay').css({ 
-        clip : 'rect(0px ' + winsize.width + 'px ' + winsize.height + 'px 0px)',
-        width : winsize.width+'px',
-        height : winsize.height+'px' 
-       });
-      }
-    });
-
-    function getWindowSize() {
-      $body.css( 'overflow-y', 'hidden' );
-      var w = $window.width(), h =  $window.height();
-      if( $scope.selectedGridElement === false ) {
-        $body.css( 'overflow-y', 'auto' );
-      }
-      return { width : w, height : h };
+    function isElementInViewport (el) {
+      var rect = el.getBoundingClientRect();
+      var stuff = -1*(0.85)*(window.innerHeight || document.documentElement.clientHeight);
+      // console.log("top: "+rect.top);
+      // console.log("bottom: "+rect.bottom);
+      return (
+          rect.top >= -1*(0.85)*(window.innerHeight || document.documentElement.clientHeight) &&
+          rect.left >= 0 &&
+          /* rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && */ /*or $(window).height() */
+          rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+      );
     }
+
+    var handler = elementVisibilityMayChange(document.getElementById('foo'));
+    $(window).on('DOMContentLoaded load resize scroll', handler); 
+    /* gif visibility test */
+
 });

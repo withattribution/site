@@ -5,6 +5,7 @@ angular.module('aokSiteApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
+  'ngAnimate',
   'ngFitText',
   'wu.masonry',
   'infinite-scroll',

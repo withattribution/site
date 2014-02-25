@@ -29,7 +29,7 @@ angular.module('aokSiteApp')
 
           $http({
               url: '/api/grid', 
-              method: "GET",
+              method: 'GET',
               params: {
                 limit: limit,
                 tag: tagged,
