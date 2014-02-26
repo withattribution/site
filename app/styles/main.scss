@@ -389,15 +389,15 @@ a:visited {text-decoration:none !important;}
   }
  
 .moving.ng-enter {
-  -webkit-animation: moveToRight .7s ease both;
-  -moz-animation: moveToRight .7s ease both;
-  animation: moveToRight .7s ease both;
+  -webkit-animation: moveToRight .4s ease both;
+  -moz-animation: moveToRight .4s ease both;
+  animation: moveToRight .4s ease both;
 }
 
 .moving.ng-leave {
-  -webkit-animation: moveToLeft .7s ease both;
-  -moz-animation: moveToLeft .7s ease both;
-  animation: moveToLeft .7s ease both;
+  -webkit-animation: moveToLeft .4s ease both;
+  -moz-animation: moveToLeft .4s ease both;
+  animation: moveToLeft .4s ease both;
 }
 
 /* move from / to  */
@@ -407,13 +407,13 @@ a:visited {text-decoration:none !important;}
          opacity: 0.3; 
          transform: translateX(-100%); 
          background-color:orange;
-       }
+  }
 
   to { 
        opacity: 1.0;
        transform: translateX(0%);
        background-color:black;
-     }
+  }
 }
 
 @keyframes moveToLeft { 
@@ -421,7 +421,7 @@ a:visited {text-decoration:none !important;}
          opacity: 1.0; 
          transform: translateX(0%); 
          background-color:black;
-       }
+    }
 
     to { 
          opacity: 0.3;

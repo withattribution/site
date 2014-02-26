@@ -10,6 +10,11 @@ angular.module('aokSiteApp', [
   'wu.masonry',
   'infinite-scroll',
   'ngTouch',
+  'com.2fdevs.videogular',
+  'com.2fdevs.videogular.plugins.controls',
+  'com.2fdevs.videogular.plugins.overlayplay',
+  'com.2fdevs.videogular.plugins.buffering',
+  'com.2fdevs.videogular.plugins.poster',
   'angular-carousel'
 ])
   .config(function ($routeProvider, $locationProvider) {

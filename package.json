@@ -11,7 +11,8 @@
     "node-easypost": "~2.0.4",
     "underscore": "~1.5.2",
     "campaign": "~1.2.1",
-    "tumblr": "~0.4.0"
+    "tumblr": "~0.4.0",
+    "express-useragent": "0.0.11"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

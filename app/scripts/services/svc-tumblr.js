@@ -6,9 +6,9 @@ angular.module('aokSiteApp')
 
     var tumblr = function(){
       var posts = [],
-        offset = 0,
-        busy = false,
-        endOf = false;
+          offset = 0,
+          busy = false,
+          endOf = false;
 
       this.defaults = { 
         tagged: '',    /* override tagged to return tagged results */
