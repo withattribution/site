@@ -330,7 +330,6 @@ a:visited {text-decoration:none !important;}
 
 
 .layer {
-  border: 1px solid red;
   width: 100%;
   height:auto;
 }
@@ -351,27 +350,46 @@ a:visited {text-decoration:none !important;}
 }
 
 .rn-carousel-control {
+  position: fixed !important;
+  padding: 10px 10px;
+  opacity: 0.4;
+  margin-top: 0px !important;
+  transition: all 0.3s ease-in-out;
 
+  &:hover {
+    opacity: 1.0;
+    margin: 0px;
+  }
 }
 
 .rn-carousel-control-prev:before {
   @extend .glyphicon;
   color: gray;
-  content: "\e079" !important;
+  content: "" !important;
 }
 
 .rn-carousel-control-prev {
-
+  background: #111 image-url("icon-arrow-left.png") no-repeat right center !important;
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+  top:45%;
+  left:0% !important;
+  margin-left: -15px;
 }
 
 .rn-carousel-control-next:before {
   @extend .glyphicon;
   color: gray;
-  content: "\e080" !important;
+  content: "" !important;
 }
 
 .rn-carousel-control-next {
-
+  background: #111 image-url("icon-arrow-right.png") no-repeat left center !important;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+  top:45%;
+  right:0% !important;
+  margin-right: -15px;
 }
 
 .moving {

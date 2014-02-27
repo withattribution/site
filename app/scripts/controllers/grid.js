@@ -54,13 +54,8 @@ angular.module('aokSiteApp')
       autoHide: false,
       autoHideTime: 3000,
       autoPlay: false,
-      responsive: false,
-      stretch: $scope.stretchModes[1],
-      sources: [
-        {src: $sce.trustAsResourceUrl("http://vt.tumblr.com/tumblr_n0ya49lolv1tsl9zz.mp4"), type: "video/mp4"}//,
-        // {src: $sce.trustAsResourceUrl("http://www.videogular.com/assets/videos/videogular.webm"), type: "video/webm"},
-        // {src: $sce.trustAsResourceUrl("http://www.videogular.com/assets/videos/videogular.ogg"), type: "video/ogg"}
-      ],
+      responsive: true,
+      stretch: $scope.stretchModes[2],
       transclude: true,
       theme: {
         url: "bower_components/videogular-themes-default/videogular.css",
@@ -93,6 +88,10 @@ angular.module('aokSiteApp')
         // console.log("selected: "+selectedIndex);
         $scope.show = !$scope.show;
         $scope.slideIndex = selectedIndex;
+
+        // if ($scope.show) {
+        //   // $('body').css('position','fixed');
+        // }
     }
 
     /* gif visibility test */

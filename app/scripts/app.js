@@ -17,7 +17,7 @@ angular.module('aokSiteApp', [
   'com.2fdevs.videogular.plugins.poster',
   'angular-carousel'
 ])
-  .config(function ($routeProvider, $locationProvider) {
+  .config(function ($routeProvider, $locationProvider, $sceDelegateProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'partials/main',
@@ -32,5 +32,14 @@ angular.module('aokSiteApp', [
       .otherwise({
         redirectTo: '/'
       });
+
     $locationProvider.html5Mode(true);
+
+    $sceDelegateProvider.resourceUrlWhitelist([
+      // Allow same origin resource loads.
+      'self',
+      // Allow loading from our assets domain.  Notice the difference between * and **.
+      'http://vt.tumblr.com/tumblr_**.mp4']);
+     // The blacklist overrides the whitelist
+     // $sceDelegateProvider.resourceUrlBlacklist([]);
   });

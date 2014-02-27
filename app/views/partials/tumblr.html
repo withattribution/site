@@ -4,19 +4,30 @@
     <ul rn-carousel class="image" rn-carousel-buffered="true" rn-carousel-index="slideIndex" rn-carousel-control="true">
       <li ng-repeat="item in grid.tumblrPosts">
         <div class="layer">
-          <img ng-if="item.type === 'photo'" class="large-backdrop" ng-src="{{ item.fullsize_photo_url || item.mobile_photo_url }}">
-<!--           <videogular ng-if="item.type === 'video'"
-      vg-player-ready="onPlayerReady" vg-complete="onCompleteVideo" vg-update-time="onUpdateTime" vg-update-size="onUpdateSize" vg-update-volume="onUpdateVolume" vg-update-state="onUpdateState"
-      vg-width="config.width" vg-height="config.height" vg-theme="config.theme.url" vg-autoplay="config.autoPlay" vg-stretch="config.stretch.value" vg-responsive="true">
+          <img ng-if="item.type === 'photo'" 
+               class="large-backdrop" 
+               ng-src="{{ item.fullsize_photo_url || item.mobile_photo_url }}">
+
+          <videogular ng-if="item.type === 'video'" 
+                      vg-player-ready="onPlayerReady" 
+                      vg-complete="onCompleteVideo" 
+                      vg-update-time="onUpdateTime" 
+                      vg-update-size="onUpdateSize" 
+                      vg-update-volume="onUpdateVolume" 
+                      vg-update-state="onUpdateState" 
+                      vg-theme="config.theme.url" 
+                      vg-autoplay="config.autoPlay" 
+                      vg-stretch="config.stretch.value" 
+                      vg-responsive="true">
             <video preload='metadata'>
-              <source ng-repeat="source in config.sources" ng-src="{{source.src}}" type="{{source.type}}">
+              <source  ng-src="{{item.video_url}}" type="video/mp4">
             </video>
 
             <vg-poster-image vg-url='item.thumbnail_url' vg-stretch="config.stretch.value"></vg-poster-image>
             <vg-buffering></vg-buffering>
             <vg-overlay-play vg-play-icon="config.theme.playIcon"></vg-overlay-play>
 
-            <vg-controls vg-autohide="config.autoHide" vg-autohide-time="config.autoHideTime" style="height: 50px;">
+<!--             <vg-controls vg-autohide="config.autoHide" vg-autohide-time="config.autoHideTime" style="height:50px;">
               <vg-play-pause-button vg-play-icon="config.theme.playIcon" vg-pause-icon="config.theme.pauseIcon"></vg-play-pause-button>
               <vg-timeDisplay>{{ currentTime }}</vg-timeDisplay>
               <vg-scrubBar>
@@ -34,18 +45,23 @@
                 <vg-volumebar></vg-volumebar>
               </vg-volume>
               <vg-fullscreenButton vg-enter-full-screen-icon="config.theme.enterFullScreenIcon" vg-exit-full-screen-icon="config.theme.exitFullScreenIcon"></vg-fullscreenButton>
-            </vg-controls>
-          </videogular> -->
+            </vg-controls> -->
+          </videogular>
         </div>
         <p class="caption">{{item.caption}}</p>
       </li>
     </ul>
   </div>
 
- <div class="masonry" masonry column-width=".grid-sizer" item-selector=".item" infinite-scroll="addTumblrPosts()"  infinite-scroll-distance="1" infinite-scroll-immediate-check='true'>
+ <div class="masonry" 
+      masonry column-width=".grid-sizer" 
+      item-selector=".item" 
+      infinite-scroll="addTumblrPosts()" 
+      infinite-scroll-distance="1" 
+      infinite-scroll-immediate-check='true'>
     <div masonry-brick class="item" ng-repeat="item in grid.tumblrPosts">
        <div ng-click="setShown($index)">
-        <img ng-src="{{ item.type === 'photo' ? item.mobile_photo_url : item.thumbnail_url }}" alt="A masonry brick">
+        <img ng-src="{{ item.type === 'photo' ? item.mobile_photo_url : item.thumbnail_url }}" alt="an aok {{item.type}}">
       </div>
     </div>
   </div>
