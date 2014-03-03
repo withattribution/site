@@ -36,14 +36,13 @@ angular.module('aokSiteApp')
                 offset: offset
               }
            }).success(function(data, status, headers) {
-              if (data.length > 0) {
-                for (var i = 0; i < data.length; i++) 
+              if (data.posts.length > 0) {
+                for (var i = 0; i < data.posts.length; i++) 
                 {
-                  posts.push(data[i]);
+                  posts.push(data.posts[i]);
                 }
-              }else {
-                /* service has run dry -- no more requests please */
-                endOf = true; 
+
+                if(posts.length == data.total_posts) { endOf = true; }
               }
               offset += limit;
               busy = false;
