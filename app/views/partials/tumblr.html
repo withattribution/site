@@ -1,6 +1,6 @@
 <div ng-controller="GridCtrl">
   <div ng-if="show" class="moving">
-    <button ng-click="$parent.show = !$parent.show" type="button" class="close grid-close" aria-hidden="true">&times;</button>
+    <button ng-click="setShown()" type="button" class="close grid-close" aria-hidden="true">&times;</button>
     <ul rn-carousel class="image" rn-carousel-buffered="true" rn-carousel-index="slideIndex" rn-carousel-control="true">
       <li ng-repeat="item in grid.tumblrPosts">
         <div class="layer">
@@ -48,7 +48,7 @@
             </vg-controls> -->
           </videogular>
         </div>
-        <p class="caption">{{item.caption}}</p>
+        <p class="caption">{{ item.caption }}</p>
       </li>
     </ul>
   </div>

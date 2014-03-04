@@ -37,12 +37,12 @@ angular.module('aokSiteApp')
               }
            }).success(function(data, status, headers) {
               if (data.posts.length > 0) {
-                for (var i = 0; i < data.posts.length; i++) 
-                {
+                for (var i = 0; i < data.posts.length; i++) {
                   posts.push(data.posts[i]);
                 }
-
-                if(posts.length == data.total_posts) { endOf = true; }
+                if(posts.length == data.total_posts) { 
+                  endOf = true; 
+                }
               }
               offset += limit;
               busy = false;
@@ -60,4 +60,3 @@ angular.module('aokSiteApp')
 
     return service;
   });
-
