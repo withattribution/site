@@ -43,4 +43,6 @@ angular.module('aokSiteApp', [
       'http://vt.tumblr.com/tumblr_**.mp4']);
      // The blacklist overrides the whitelist
      // $sceDelegateProvider.resourceUrlBlacklist([]);
+  }).run(function() {
+    FastClick.attach(document.body);
   });

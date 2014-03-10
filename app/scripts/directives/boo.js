@@ -21,7 +21,7 @@ angular.module('aok-boo',[])
     return {
       restrict: 'E',
       scope: {
-        peeking: '&'
+        peeking: '@'
       },
       link: function( scope, element, attrs) {
 

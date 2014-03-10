@@ -4,11 +4,11 @@
 
 @font-face {
   font-family: "aokfont";
-  src: url("../fonts/aokfont_1e06ff4fa8a41016d59da066a3d2f5f3.eot");
-  src: url("../fonts/aokfont_1e06ff4fa8a41016d59da066a3d2f5f3.eot?#iefix") format("embedded-opentype"),
-       url("../fonts/aokfont_1e06ff4fa8a41016d59da066a3d2f5f3.woff") format("woff"),
-       url("../fonts/aokfont_1e06ff4fa8a41016d59da066a3d2f5f3.ttf") format("truetype"),
-       url("../fonts/aokfont_1e06ff4fa8a41016d59da066a3d2f5f3.svg#aokfont") format("svg");
+  src: url("../fonts/aokfont_3b1bee98b0cb09798fac2c74ceeb31d4.eot");
+  src: url("../fonts/aokfont_3b1bee98b0cb09798fac2c74ceeb31d4.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/aokfont_3b1bee98b0cb09798fac2c74ceeb31d4.woff") format("woff"),
+       url("../fonts/aokfont_3b1bee98b0cb09798fac2c74ceeb31d4.ttf") format("truetype"),
+       url("../fonts/aokfont_3b1bee98b0cb09798fac2c74ceeb31d4.svg#aokfont") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -16,15 +16,18 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: "aokfont";
-    src: url("../fonts/aokfont_1e06ff4fa8a41016d59da066a3d2f5f3.svg#aokfont") format("svg");
+    src: url("../fonts/aokfont_3b1bee98b0cb09798fac2c74ceeb31d4.svg#aokfont") format("svg");
   }
 }
 
 [data-icon]:before { content: attr(data-icon); }
 
 [data-icon]:before,
+.icon-aok-close:before,
 .icon-aok-dart:before,
+.icon-aok-left-arrow:before,
 .icon-aok-logo:before,
+.icon-aok-right-arrow:before,
 .icon-aok-tumblr:before,
 .icon-aok-twitter:before {
   display: inline-block;
@@ -39,7 +42,10 @@
   -webkit-font-smoothing: antialiased;
 }
 
-.icon-aok-dart:before { content: "\f109"; }
+.icon-aok-close:before { content: "\f100"; }
+.icon-aok-dart:before { content: "\f101"; }
+.icon-aok-left-arrow:before { content: "\f102"; }
 .icon-aok-logo:before { content: "\f103"; }
-.icon-aok-tumblr:before { content: "\f104"; }
-.icon-aok-twitter:before { content: "\f10a"; }
+.icon-aok-right-arrow:before { content: "\f104"; }
+.icon-aok-tumblr:before { content: "\f105"; }
+.icon-aok-twitter:before { content: "\f106"; }
