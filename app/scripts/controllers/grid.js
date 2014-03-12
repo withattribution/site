@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('aokSiteApp')
-  .controller('GridCtrl', function ($scope, TumblrService) {
+  .controller('GridCtrl', function ($scope,  $location, TumblrService) {
 
     $scope.grid = {};
+    $scope.grid.slideIndex = 0;
     $scope.grid.tumblrPosts = [];
 
     $scope.show = false;
-    $scope.slideIndex = 0;
 
     $scope.currentTime = 0;
     $scope.totalTime = 0;
@@ -48,6 +48,8 @@ angular.module('aokSiteApp')
       {label: "Fill", value: "fill"}
     ];
 
+    console.log($location.path());
+
     $scope.config = {
       width: 740,
       height: 380,
@@ -84,17 +86,23 @@ angular.module('aokSiteApp')
       });
     }
 
+    /* event registration for the grid-overlay*/
+    
     var overlayEnter = new Event('aok-overlay-enter');
     var overlayExit = new Event('aok-overlay-exit');
 
     $scope.setShown = function(selectedIndex) {
-        ($scope.show) ? window.dispatchEvent(overlayExit) : window.dispatchEvent(overlayEnter);
-        $scope.show = !$scope.show;
-        $scope.slideIndex = selectedIndex || 0;
+      ($scope.show) ? window.dispatchEvent(overlayExit) : window.dispatchEvent(overlayEnter);
+      $scope.show = !$scope.show;
+      $scope.grid.slideIndex = selectedIndex || 0;
+    }
 
-        // if ($scope.show) {
-        //   // $('body').css('position','fixed');
-        // }
+     $scope.prev = function() {
+      $scope.grid.slideIndex--;
+    }
+    
+    $scope.next = function() {
+      $scope.grid.slideIndex++;
     }
 
 });
