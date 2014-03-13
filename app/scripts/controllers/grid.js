@@ -5,6 +5,7 @@ angular.module('aokSiteApp')
 
     $scope.grid = {};
     $scope.grid.slideIndex = 0;
+    $scope.grid.hasLargeImages = true;
     $scope.grid.tumblrPosts = [];
 
     $scope.show = false;
@@ -83,6 +84,14 @@ angular.module('aokSiteApp')
     $scope.addTumblrPosts = function() {
       tumblr.query(function(posts){
         $scope.grid.tumblrPosts = posts;
+
+        angular.forEach(posts, function(value,key){
+          if(posts[key].fullsize_photo_url === undefined){
+            $scope.grid.hasLargeImages = false;
+            return;
+          }
+        });
+
       });
     }
 
@@ -92,6 +101,8 @@ angular.module('aokSiteApp')
     var overlayExit = new Event('aok-overlay-exit');
 
     $scope.setShown = function(selectedIndex) {
+      if(!$scope.grid.hasLargeImages) return;
+
       ($scope.show) ? window.dispatchEvent(overlayExit) : window.dispatchEvent(overlayEnter);
       $scope.show = !$scope.show;
       $scope.grid.slideIndex = selectedIndex || 0;
@@ -100,7 +111,7 @@ angular.module('aokSiteApp')
      $scope.prev = function() {
       $scope.grid.slideIndex--;
     }
-    
+
     $scope.next = function() {
       $scope.grid.slideIndex++;
     }

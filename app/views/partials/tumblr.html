@@ -1,5 +1,5 @@
 <div class="grid" ng-controller="GridCtrl">
-    <div ng-if="show" class="overlay"> 
+    <div ng-if="show && grid.hasLargeImages" class="overlay"> 
     <button ng-click="setShown()" type="button" class="overlay-close"></button>
     <ul rn-carousel class="image" 
         rn-carousel-buffered="true" 
