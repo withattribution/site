@@ -105,6 +105,10 @@ html,body {
   }
 }
 
+.main-footer {
+  background: black;
+}
+
 .brand-logo-aok {
   @include icon-font(aok-logo){}
   font-size: 120px;
@@ -171,29 +175,21 @@ html,body {
 }
 
 .social-buttons {
-  position: absolute;
-  bottom: 20px;
   width: 100%;
-  @media (max-width: $screen-xs-max) {
-    position: static;
-  }
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  padding: 5px 0 0 5px;
 
   .glyphicon-envelope {
-    position:relative;
     font-size: 18px !important;
   }
 
   .tumblr, .twitter, .glyphicon-envelope {
     font-size: 24px;
-    color: white;
     margin: 0px 10px 0px 10px;
     &:hover {
       color: $aok-green;
-    }
-    @media (max-width: $screen-xs-max) {
-      position: static;
-      bottom: 0px;
-      color: black;
     }
   }
 }
@@ -233,10 +229,10 @@ a:visited {text-decoration:none !important;}
 }
 
 .browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
 }
 
 /* Responsive: Portrait tablets and up */
@@ -271,15 +267,11 @@ a:visited {text-decoration:none !important;}
 .masonry .grid-sizer {
   @media (max-width: $screen-xs-min) {
     width: 100%;
-    height: auto;
-    overflow: visible;
-    max-height: none;
   }
   @media (min-width: $screen-xs-min) and (max-width:$screen-xs-max) {
     width: 50%;
   }
   width: 33.3%;
-  max-height: 250px;
   overflow: hidden;
   border: 1px solid black;
   img { 
@@ -287,11 +279,13 @@ a:visited {text-decoration:none !important;}
   }
 }
 
+/* overlay css */
+
 .overlay {
   position: fixed;
   top: 0px;
   width: 100%;
-  height: 100%;
+  height: 100% !important;
   perspective: 1200px;
   z-index: $zindex-navbar - 1;
   background: black;
@@ -317,31 +311,53 @@ a:visited {text-decoration:none !important;}
   z-index: $zindex-navbar+2;
 }
 
-.detailFooter {
-  position: relative;
-  color: white;
-  width: 100%;
-  border: 1px solid black;
+.carousel-image {
+  margin: 0 auto;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
 }
 
-// .layer {
-//   width: 100%;
-//   height:auto;
-// }
-
 .caption {
+  position: absolute;
+  bottom: 5%;
+
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 10%;
+
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100; 
+  font-size: 20px;
+  
+  color: white;
+  z-index: $zindex-navbar+1;
+}
+
+.caption-mobile {
+  @media (min-width: $screen-xs) {
+    display: none;
+  }
+
+  @media(max-width: $screen-xs-min) {
+    margin: 0% 5% 5% 0%;
+    padding: 0% 0% 0% 12%;
+  }
+
   position: relative;
-  top: 100px;
+  bottom: 5%;
+  
   display: inline-block;
   color: white;
   clear: both;
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 17%;
+  padding-right: 17%;
   width: 100%;
   font-family: 'Raleway', sans-serif;
   font-weight: 100; 
   font-size: 20px;
-  margin: 0 auto;
+  margin: 0 auto 0 auto;
+  border: 1px solid white;
 }
 
 .aok-carousel-control {
@@ -371,7 +387,7 @@ a:visited {text-decoration:none !important;}
 }
 
 .aok-carousel-control-next {
-  right:-140px;
+  right:-145px;
   opacity: 0.4 !important;
   
   animation: moveArrowRight 0.2s ease both;
@@ -449,4 +465,3 @@ a:visited {text-decoration:none !important;}
     transform: translate(0%,0%);
   }
 }
-
