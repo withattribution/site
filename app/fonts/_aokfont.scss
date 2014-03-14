@@ -4,11 +4,11 @@
 
 @font-face {
   font-family: "aokfont";
-  src: url("../fonts/aokfont_3b1bee98b0cb09798fac2c74ceeb31d4.eot");
-  src: url("../fonts/aokfont_3b1bee98b0cb09798fac2c74ceeb31d4.eot?#iefix") format("embedded-opentype"),
-       url("../fonts/aokfont_3b1bee98b0cb09798fac2c74ceeb31d4.woff") format("woff"),
-       url("../fonts/aokfont_3b1bee98b0cb09798fac2c74ceeb31d4.ttf") format("truetype"),
-       url("../fonts/aokfont_3b1bee98b0cb09798fac2c74ceeb31d4.svg#aokfont") format("svg");
+  src: url("../fonts/aokfont_7c601bf772f1c2f81dbe65318cb5146e.eot");
+  src: url("../fonts/aokfont_7c601bf772f1c2f81dbe65318cb5146e.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/aokfont_7c601bf772f1c2f81dbe65318cb5146e.woff") format("woff"),
+       url("../fonts/aokfont_7c601bf772f1c2f81dbe65318cb5146e.ttf") format("truetype"),
+       url("../fonts/aokfont_7c601bf772f1c2f81dbe65318cb5146e.svg#aokfont") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -16,7 +16,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: "aokfont";
-    src: url("../fonts/aokfont_3b1bee98b0cb09798fac2c74ceeb31d4.svg#aokfont") format("svg");
+    src: url("../fonts/aokfont_7c601bf772f1c2f81dbe65318cb5146e.svg#aokfont") format("svg");
   }
 }
 
@@ -25,8 +25,12 @@
 [data-icon]:before,
 .icon-aok-close:before,
 .icon-aok-dart:before,
+.icon-aok-flake:before,
+.icon-aok-hands:before,
 .icon-aok-left-arrow:before,
 .icon-aok-logo:before,
+.icon-aok-mail:before,
+.icon-aok-play:before,
 .icon-aok-right-arrow:before,
 .icon-aok-tumblr:before,
 .icon-aok-twitter:before {
@@ -42,10 +46,14 @@
   -webkit-font-smoothing: antialiased;
 }
 
-.icon-aok-close:before { content: "\f100"; }
-.icon-aok-dart:before { content: "\f101"; }
-.icon-aok-left-arrow:before { content: "\f102"; }
+.icon-aok-close:before { content: "\f10b"; }
+.icon-aok-dart:before { content: "\f109"; }
+.icon-aok-flake:before { content: "\f112"; }
+.icon-aok-hands:before { content: "\f113"; }
+.icon-aok-left-arrow:before { content: "\f10c"; }
 .icon-aok-logo:before { content: "\f103"; }
-.icon-aok-right-arrow:before { content: "\f104"; }
-.icon-aok-tumblr:before { content: "\f105"; }
-.icon-aok-twitter:before { content: "\f106"; }
+.icon-aok-mail:before { content: "\f114"; }
+.icon-aok-play:before { content: "\f115"; }
+.icon-aok-right-arrow:before { content: "\f10d"; }
+.icon-aok-tumblr:before { content: "\f104"; }
+.icon-aok-twitter:before { content: "\f10a"; }
