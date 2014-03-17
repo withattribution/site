@@ -62,7 +62,7 @@ angular.module('aokSiteApp')
       transclude: true,
       theme: {
         url: "bower_components/videogular-themes-default/videogular.css",
-        playIcon: "&#xe000;",
+        playIcon: "&#xf115;",
         pauseIcon: "&#xe001;",
         volumeLevel3Icon: "&#xe002;",
         volumeLevel2Icon: "&#xe003;",
@@ -87,7 +87,7 @@ angular.module('aokSiteApp')
 
         angular.forEach(posts, function(value,key){
           if(posts[key].fullsize_photo_url === undefined){
-            $scope.grid.hasLargeImages = false;
+            $scope.grid.hasLargeImages = true;
             return;
           }
         });

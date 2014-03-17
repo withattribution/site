@@ -35,8 +35,13 @@
         </div>
       </li>
     </ul>
+    
     <p ng-class="{caption : grid.tumblrPosts[grid.slideIndex].caption}">{{grid.tumblrPosts[grid.slideIndex].caption}}</p>
-    <span class="aok-carousel-control aok-carousel-control-prev icon-aok-left-arrow" ng-if="grid.slideIndex > 0" ng-click="prev()"></span>
+   
+    <!-- <p class="caption">this is as good a place as any to put a caption — these are gonna be rarely used am i right?</p> -->
+
+ <span class="aok-carousel-control aok-carousel-control-prev icon-aok-left-arrow" ng-if="grid.slideIndex > 0" ng-click="
+ prev()"></span>
     <span class="aok-carousel-control aok-carousel-control-next icon-aok-right-arrow" ng-if="grid.slideIndex < grid.tumblrPosts.length - 1" ng-click="next()"></span>
   </div>
   <div class="masonry" 
