@@ -24,7 +24,8 @@
     "videogular-poster": "~0.3.0",
     "videogular-overlay-play": "~0.3.0",
     "ngInfiniteScroll": "~1.0.0",
-    "fastclick": "~1.0.0"
+    "fastclick": "~1.0.0",
+    "font-awesome": "~4.0.3"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.11",

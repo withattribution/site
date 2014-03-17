@@ -1,16 +1,14 @@
 <div class="grid" ng-controller="GridCtrl">
-    <div ng-if="show && grid.hasLargeImages" class="overlay"> 
+    <div ng-if="show" class="overlay"> 
     <span ng-click="setShown()" class="overlay-close icon-aok-close"></span>
     <ul rn-carousel
         rn-carousel-buffered="true" 
         rn-carousel-index="grid.slideIndex">
       <li ng-repeat="item in grid.tumblrPosts">
         <div class="carousel-layer">
-
           <img ng-if="item.type === 'photo'" 
                class="carousel-image" 
                ng-src="{{ item.fullsize_photo_url || item.mobile_photo_url }}">
-
           <videogular ng-if="item.type === 'video'" 
                       vg-player-ready="onPlayerReady" 
                       vg-complete="onCompleteVideo" 
@@ -31,7 +29,6 @@
             <vg-buffering></vg-buffering>
             <vg-overlay-play vg-play-icon="config.theme.playIcon"></vg-overlay-play>
           </videogular>
-
         </div>
       </li>
     </ul>
@@ -40,8 +37,7 @@
    
     <!-- <p class="caption">this is as good a place as any to put a caption — these are gonna be rarely used am i right?</p> -->
 
- <span class="aok-carousel-control aok-carousel-control-prev icon-aok-left-arrow" ng-if="grid.slideIndex > 0" ng-click="
- prev()"></span>
+    <span class="aok-carousel-control aok-carousel-control-prev icon-aok-left-arrow" ng-if="grid.slideIndex > 0" ng-click="prev()"></span>
     <span class="aok-carousel-control aok-carousel-control-next icon-aok-right-arrow" ng-if="grid.slideIndex < grid.tumblrPosts.length - 1" ng-click="next()"></span>
   </div>
   <div class="masonry" 
@@ -52,8 +48,28 @@
       infinite-scroll-immediate-check='true'>
     <div masonry-brick class="item" ng-repeat="item in grid.tumblrPosts">
        <div ng-click="setShown($index)">
-        <img ng-src="{{item.type === 'photo' ? item.mobile_photo_url : item.thumbnail_url}}" alt="an aok {{item.type}}">
-        <span ng-class="{'caption-mobile' : item.caption}">{{item.caption}}</span>
+        <img ng-if=" item.type === 'photo' || grid.hasLargeImages" ng-src="{{ item.type === 'photo' ? item.mobile_photo_url : item.thumbnail_url }}" alt="an aok {{item.type}}">
+        <videogular ng-if="item.type === 'video' && !grid.hasLargeImages" 
+            vg-player-ready="onPlayerReady" 
+            vg-complete="onCompleteVideo" 
+            vg-update-time="onUpdateTime" 
+            vg-update-size="onUpdateSize" 
+            vg-update-volume="onUpdateVolume" 
+            vg-update-state="onUpdateState" 
+            vg-theme="config.theme.url" 
+            vg-autoplay="config.autoPlay" 
+            vg-stretch="config.stretch.value" 
+            vg-responsive="true">
+
+          <video preload='metadata'>
+            <source  ng-src="{{item.video_url}}" type="video/mp4">
+          </video>
+
+          <vg-poster-image vg-url='item.thumbnail_url' vg-stretch="config.stretch.value"></vg-poster-image>
+          <vg-buffering></vg-buffering>
+          <vg-overlay-play vg-play-icon="config.theme.playIcon"></vg-overlay-play>
+        </videogular>
+        <span ng-class="{'caption-mobile':item.caption}">{{item.caption}}</span>
       </div>
     </div>
   </div>
