@@ -35,7 +35,7 @@ angular.module('aokSiteApp')
                 tag: tagged,
                 offset: offset
               }
-           }).success(function(data, status, headers) {
+           },{cache: true}).success(function(data, status, headers) {
               if (data.posts.length > 0) {
                 for (var i = 0; i < data.posts.length; i++) {
                   posts.push(data.posts[i]);
