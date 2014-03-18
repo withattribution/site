@@ -29,6 +29,51 @@ html,body {
   overflow-y: auto;
 }
 
+button {
+  outline: none !important;
+}
+
+a:link { text-decoration:none !important; }
+a:visited { text-decoration:none !important; }
+
+a {
+  color:#FFF !important;
+
+  &.description-list {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+}
+
+a:hover {
+  color: #FFF !important;
+
+  &.description-list {
+    color: $aok-green-hover !important;
+    text-decoration: none !important;
+  }
+}
+
+a:visited {
+  color: #FFF !important;
+  text-decoration: none !important;
+
+  &.description-list {
+    color: #000 !important;
+    text-decoration: none !important;
+
+    &:hover {
+      color: $aok-green-hover !important;
+    }
+  }
+
+
+}
+
+a:active {
+  color: #FFF !important;
+}
+
 .aok-product {
   hr {
     border: 1px solid black !important;
@@ -158,6 +203,11 @@ html,body {
 }
 
 .brand-logo-aok {
+
+  background: transparent !important;
+  border: 2px solid transparent !important;
+  padding-right: 10px !important;
+  
   @include icon-font(aok-logo);
   font-size: 120px;
   color: #FFF;
@@ -170,6 +220,10 @@ html,body {
 }
 
 .stuff{
+  background: transparent !important;
+  border: 2px solid transparent !important;
+  padding-right: 15px !important;
+  // -webkit-appearance: none !important;
   text-align: center;
   color: #FFF !important;
   margin-left: 20px; 
@@ -264,46 +318,6 @@ html,body {
   }
 }
 
-a:link { text-decoration:none !important; }
-a:visited { text-decoration:none !important; }
-
-  a {
-    color:#FFF !important;
-
-    &.description-list {
-      color: #000 !important;
-      text-decoration: none !important;
-    }
-  }
-
-  a:hover {
-    color: #FFF !important;
-
-    &.description-list {
-      color: $aok-green-hover !important;
-      text-decoration: none !important;
-    }
-  }
-
-  a:visited {
-    color: #FFF !important;
-    text-decoration: none !important;
-
-    &.description-list {
-      color: #000 !important;
-      text-decoration: none !important;
-
-      &:hover {
-        color: $aok-green-hover !important;
-      }
-    }
-
-
-  }
-  a:active {
-    color: #FFF !important;
-  }
-
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -351,7 +365,6 @@ a:visited { text-decoration:none !important; }
     width: 50%;
   }
   width: 33.3%;
-  overflow: hidden;
   border: 1px solid $aok-green;
   img { 
     width: 100%;
@@ -369,6 +382,9 @@ a:visited { text-decoration:none !important; }
   z-index: $zindex-navbar - 1;
   background: $aok-green;
   backface-visibility: hidden;
+
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .grid {

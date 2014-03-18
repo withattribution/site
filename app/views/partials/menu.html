@@ -1,0 +1,15 @@
+<div> 
+  <!-- <span ng-click="menu.show()" class="overlay-close icon-aok-close"></span> -->
+  <div class="masonry" 
+       masonry column-width=".grid-sizer" 
+       item-selector=".item"
+       infinite-scroll="stuffTumblr()" 
+       infinite-scroll-distance="1" 
+       infinite-scroll-immediate-check='true'>
+    <div masonry-brick class="item" ng-repeat="item in menu.stuff">
+      <div ng-click="navigate(item.tags)">
+        <img ng-src="{{ item.mobile_photo_url }}" alt="an a-ok {{ item.type }}">
+      </div>
+    </div>
+  </div>
+</div>

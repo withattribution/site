@@ -49,8 +49,6 @@ angular.module('aokSiteApp')
       {label: "Fill", value: "fill"}
     ];
 
-    console.log($location.path());
-
     $scope.config = {
       width: 740,
       height: 380,
@@ -79,10 +77,12 @@ angular.module('aokSiteApp')
       }
     };
 
+    var taggedPage = $location.path().replace("/","");
+    
     var tumblr = TumblrService.instance();
 
     $scope.addTumblrPosts = function() {
-      tumblr.query(function(posts){
+      tumblr.query({tagged:taggedPage}, function(posts){
         $scope.grid.tumblrPosts = posts;
 
         angular.forEach(posts, function(value,key){

@@ -1,6 +1,7 @@
 <div class="grid" ng-controller="GridCtrl">
-    <div ng-if="show" class="overlay"> 
+  <div ng-if="show" class="overlay"> 
     <span ng-click="setShown()" class="overlay-close icon-aok-close"></span>
+    
     <ul rn-carousel
         rn-carousel-buffered="true" 
         rn-carousel-index="grid.slideIndex">
@@ -21,7 +22,7 @@
                       vg-stretch="config.stretch.value" 
                       vg-responsive="true">
 
-            <video preload='metadata'>
+            <video>
               <source  ng-src="{{item.video_url}}" type="video/mp4">
             </video>
 
@@ -48,7 +49,7 @@
       infinite-scroll-immediate-check='true'>
     <div masonry-brick class="item" ng-repeat="item in grid.tumblrPosts">
        <div ng-click="setShown($index)">
-        <img ng-if=" item.type === 'photo' || grid.hasLargeImages" ng-src="{{ item.type === 'photo' ? item.mobile_photo_url : item.thumbnail_url }}" alt="an aok {{item.type}}">
+        <img ng-if=" item.type === 'photo' || grid.hasLargeImages" ng-src="{{ item.type === 'photo' ? item.mobile_photo_url : item.thumbnail_url }}" alt="an a-ok {{item.type}}">
         <videogular ng-if="item.type === 'video' && !grid.hasLargeImages" 
             vg-player-ready="onPlayerReady" 
             vg-complete="onCompleteVideo" 

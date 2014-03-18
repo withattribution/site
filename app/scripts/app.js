@@ -20,18 +20,13 @@ angular.module('aokSiteApp', [
 ])
   .config(function ($routeProvider, $locationProvider, $sceDelegateProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'partials/main',
-        controller: 'MainCtrl'
-      })
-      .when('/cart', {
-        templateUrl: 'partials/cart'
-      })
-      .when('/about', {
-        templateUrl: 'partials/about'
+      .when('/:pageName', {
+        templateUrl: function(params) {
+          return 'partials/' + params.pageName;
+        }
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/about'
       });
 
     $locationProvider.html5Mode(true);
