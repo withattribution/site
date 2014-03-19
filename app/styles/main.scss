@@ -1,7 +1,9 @@
-$icon-font-path: "/bower_components/sass-bootstrap/fonts/";
+/* how to font: http://stackoverflow.com/questions/21310382/fontawesome-is-not-working-when-project-is-built-with-grunt*/
 
-@import 'sass-bootstrap/lib/bootstrap';
-@import 'font-awesome/scss/font-awesome';
+$icon-font-path: "/bower_components/sass-bootstrap/fonts/";
+$fa-font-path: "/bower_components/font-awesome/fonts/";
+@import "font-awesome/scss/font-awesome";
+@import "sass-bootstrap/lib/bootstrap";
 @import "../fonts/aokfont";
 
 $aok-green: rgba(55,110,110,1.0);
