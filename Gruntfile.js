@@ -330,6 +330,7 @@ module.exports = function (grunt) {
           dest: '<%= yeoman.dist %>/public/images',
           src: ['generated/*']
         },{
+          /*that's right, this is specifically for font-awesome*/
           expand: true,
           cwd: '<%= yeoman.app %>/bower_components/components-font-awesome/fonts/', 
           src: '*.{eot,svg,ttf,woff,otf}', 
