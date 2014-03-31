@@ -1,4 +1,6 @@
 <div class="grid" ng-controller="GridCtrl">
+<!--   <div class="overlay" ng-if="show" ng-include="'partials/menu'"></div>
+ -->
   <div ng-if="show" class="overlay"> 
     <span ng-click="setShown()" class="overlay-close icon-aok-close"></span>
     
@@ -22,7 +24,7 @@
                       vg-stretch="config.stretch.value" 
                       vg-responsive="true">
 
-            <video>
+            <video preload="metadata">
               <source  ng-src="{{item.video_url}}" type="video/mp4">
             </video>
 
@@ -36,11 +38,13 @@
     
     <p ng-class="{caption : grid.tumblrPosts[grid.slideIndex].caption}">{{grid.tumblrPosts[grid.slideIndex].caption}}</p>
    
-    <!-- <p class="caption">this is as good a place as any to put a caption — these are gonna be rarely used am i right?</p> -->
 
     <span class="aok-carousel-control aok-carousel-control-prev icon-aok-left-arrow" ng-if="grid.slideIndex > 0" ng-click="prev()"></span>
     <span class="aok-carousel-control aok-carousel-control-next icon-aok-right-arrow" ng-if="grid.slideIndex < grid.tumblrPosts.length - 1" ng-click="next()"></span>
   </div>
+
+   <!-- <p class="caption">this is as good a place as any to put a caption — these are gonna be rarely used am i right?</p>  -->
+
   <div class="masonry" 
       masonry column-width=".grid-sizer" 
       item-selector=".item" 
