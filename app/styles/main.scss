@@ -122,10 +122,9 @@ a:active {
       width: 85%;
     }
     position: absolute;
-    top: 150px;
-    width: 40%;
-    // max-width: 100.3%;
-    left: 60%;
+    top: 180px;
+    width: 50%;
+    left: 56%;
   }
 }
 
@@ -177,6 +176,7 @@ a:active {
 
 .subscribe-tag {
   margin: 0px;
+  font-style:italic;
 
   @media (max-width: $screen-sm) {
     text-align: center;
@@ -217,9 +217,16 @@ a:active {
 }
 
 .dart-email {
+
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400; 
+  font-size: 1.6em;
+
+  margin: 0px;
+
   background-color: transparent;
-  border: 2px solid black;
-  width: 45%;
+  border: 2px solid rgb(55,55,55);
+  width: 55%;
   height: 45px;
 
   &:hover {
@@ -236,27 +243,34 @@ a:active {
   }
 }
 
+.fa-square-o:before {
+  margin-right: 2px;
+}
 
+.fa-twitter-square:before {
+  margin-right: 2px;
+}
+
+.aok-button {
+
+}
 
 .subscribe-button {
   font-family: 'Raleway', sans-serif;
   font-weight: 400; 
   font-size: 1.6em;
 
-  text-align: center;
-  vertical-align: middle;
+  height: 45px;
 
-  display: inline-block;
-
-  margin: 10px auto 20px 0;
-  padding: 5px 10px;
+  // margin: 10px auto 20px 0;
+  // padding: 5px 11px;
 
   cursor: pointer;
   background-image: none;
   background-color: transparent !important;
   white-space: nowrap;
 
-  min-width: 40%;
+  min-width: 30%;
   border: 2px solid black !important;
 
   &:hover {
@@ -439,7 +453,7 @@ a:active {
   @media (min-width: $screen-xs-min) and (max-width:$screen-xs-max) {
     width: 50%;
   }
-  width: 33.3%;
+  width: 33.333%;
   border: 1px solid $aok-green;
   img { 
     width: 100%;
